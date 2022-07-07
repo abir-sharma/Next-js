@@ -6,7 +6,7 @@ const ShirtCard = ({shirt}) => {
   return (
     <div className={styles.container}>
       <Link href={`/product/${shirt._id}`} passHref>
-      <Image src={shirt.img} alt="" width="500" height="500" />
+      <Image src={shirt.img} alt="shirt" width="500" height="500" />
       </Link>
       <h1 className={styles.title}>{shirt.title}</h1>
       <span className={styles.price}>${shirt.prices[0]}</span>
