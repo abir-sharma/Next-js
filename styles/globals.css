@@ -1,4 +1,7 @@
-html,
+html {
+  font-size: 62.5%;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 body {
   padding: 0;
   margin: 0;
@@ -13,4 +16,9 @@ a {
 
 * {
   box-sizing: border-box;
+}
+@media screen and (max-width:485) {
+  body {
+    background-color: blue;
+  }
 }
