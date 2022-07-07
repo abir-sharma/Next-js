@@ -1,6 +1,7 @@
 import styles from "../../styles/Order.module.css";
 import Image from "next/image";
 import axios from "axios";
+import Head from "next/head";
 
 const Order = (order) => {
   console.log(order.order)
@@ -13,6 +14,11 @@ const Order = (order) => {
   };
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Order Details</title>
+        <meta name="description" content="Best pizza shop in town" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className={styles.left}>
         <div className={styles.row}>
           <table className={styles.table}>
@@ -115,7 +121,7 @@ const Order = (order) => {
 };
 
 export const getServerSideProps=async({params})=>{
-  const res=await axios.get(`http://localhost:3000/api/orders/${params.id}`)
+  const res=await axios.get(`/api/orders/${params.id}`)
   return {
     props:{
       order:res.data,
