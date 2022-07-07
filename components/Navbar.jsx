@@ -10,7 +10,7 @@ const Navbar = () => {
     <div className={styles.container} >
        <div className={styles.left}>
          <Link href="/" >
-         <Image src="/img/t.png" width="70px" height="70px" />
+         <Image src="/img/t.png" width="70px" height="70px" alt="" />
          </Link>
        </div>
        <div className={styles.cart}>
