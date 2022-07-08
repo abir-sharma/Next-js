@@ -92,7 +92,7 @@ const Cart = () => {
           {!open && <button className={styles.button} onClick={()=>setOpen(true)} >CHECKOUT NOW!</button>}
           {open && <button className={styles.button} onClick={()=>setOpen(true)} >COD not Availaible</button>}
           {open && <StripeCheckout
-          stripeKey="pk_test_51KrJyLSJ7vO7M2EXI5rN9iCkRxPyiaThreeHrjARvABDshHHt21pxVQZXI4E7gwyl8U1vDOH8V0MKszEG1feaPVn00ozROq74X"
+          stripeKey={process.env.STRIPE_KEY}
           token={handleToken}
           amount={cart.total*100}
           billingAddress
