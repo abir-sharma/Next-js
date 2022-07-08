@@ -2,6 +2,7 @@ import styles from "../../styles/Order.module.css";
 import Image from "next/image";
 import axios from "axios";
 import Head from "next/head";
+import baseUrl from "../../utils/base";
 
 const Order = (order) => {
   console.log(order.order)
@@ -121,7 +122,7 @@ const Order = (order) => {
 };
 
 export const getServerSideProps=async({params})=>{
-  const res=await axios.get(`/api/orders/${params.id}`)
+  const res=await axios.get(`${baseUrl}/api/orders/${params.id}`)
   return {
     props:{
       order:res.data,

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import styles from "../../styles/Admin.module.css";
 import Head from "next/head";
+import baseUrl from "../../utils/base";
 
 const Index = ({ orders, products }) => {
   const [pizzaList, setPizzaList] = useState(products);
@@ -13,7 +14,7 @@ const Index = ({ orders, products }) => {
     console.log(id);
     try {
       const res = await axios.delete(
-        "/api/products/" + id
+        `${baseUrl}/api/products/` + id
       );
       setPizzaList(pizzaList.filter((pizza) => pizza._id !== id));
     } catch (err) {
@@ -23,7 +24,7 @@ const Index = ({ orders, products }) => {
   const handleEdit = async (id) => {
     try {
       const res = await axios.put(
-        "/api/products/" + id,{}
+        `${baseUrl}/api/products/` + id,{}
       );
       setPizzaList(pizzaList.filter((pizza) => pizza._id !== id));
     } catch (err) {
@@ -36,7 +37,7 @@ const Index = ({ orders, products }) => {
     const currentStatus = item.status;
 
     try {
-      const res = await axios.put("/api/orders/" + id, {
+      const res = await axios.put(`${baseUrl}/api/orders/` + id, {
         status: currentStatus + 1,
       });
       setOrderList([
@@ -144,8 +145,8 @@ export const getServerSideProps = async (ctx) => {
     };
   }
 
-  const productRes = await axios.get("/api/products");
-  const orderRes = await axios.get("/api/orders");
+  const productRes = await axios.get(`${baseUrl}/api/products`);
+  const orderRes = await axios.get(`${baseUrl}/api/orders`);
 
   return {
     props: {

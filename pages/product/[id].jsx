@@ -5,6 +5,8 @@ import axios from 'axios'
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../redux/cartSlice";
 import Head from "next/head";
+import baseUrl from "../../utils/base"
+
 const Product = ({shirt}) => {
   const dispatch=useDispatch()
   const [price, setPrice] = useState(shirt.prices[0]);
@@ -66,7 +68,7 @@ const Product = ({shirt}) => {
 };
 
 export const getServerSideProps=async({params})=>{
-  const res=await axios.get(`/api/products/${params.id}`)
+  const res=await axios.get(`${baseUrl}/api/products/${params.id}`)
   return {
     props:{
       shirt:res.data,

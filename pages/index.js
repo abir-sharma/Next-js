@@ -6,6 +6,7 @@ import { useState } from "react";
 import Add from "../components/Add";
 import AddButton from "../components/AddButton"
 import Link from 'next/link'
+import baseUrl from "../utils/base";
 
 export default function Home({shirtList,admin}) {
   const [close,setClose]=useState(true)
@@ -37,7 +38,7 @@ export const getServerSideProps=async(ctx)=>{
   if (myCookie.token===process.env.TOKEN){
     admin=true
   }
-  const res=await axios.get("/api/products")
+  const res=await axios.get(`${baseUrl}/api/products`)
   return {
     props:{
       shirtList:res.data,

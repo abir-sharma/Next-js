@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import styles from "../../styles/Login.module.css";
 import Head from "next/head";
+import baseUrl from "../../utils/base";
 
 const Login = () => {
   const [username, setUsername] = useState(null);
@@ -12,7 +13,7 @@ const Login = () => {
 
   const handleClick = async () => {
     try {
-      await axios.post("/api/login", {
+      await axios.post(`${baseUrl}/api/login`, {
         username,
         password,
       });

@@ -7,7 +7,7 @@ import {reset} from "../redux/cartSlice"
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 import Head from "next/head";
-
+import baseUrl from "../utils/base";
 
 
 const Cart = () => {
@@ -19,7 +19,7 @@ const Cart = () => {
   const createOrder=async(data)=>{
     try {
       console.log(data)
-      const res=await axios.post("/api/orders",data)
+      const res=await axios.post(`${baseUrl}/api/orders`,data)
       res.status===201 && router.push("/orders/"+res.data._id)
       dispatch(reset())
     } catch (error) {
