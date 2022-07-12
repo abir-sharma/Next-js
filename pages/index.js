@@ -38,7 +38,8 @@ export const getServerSideProps=async(ctx)=>{
   if (myCookie.token===process.env.TOKEN){
     admin=true
   }
-  const res=await axios.get(`${baseUrl}/api/products`)
+  let url=process.env.NEXTAUTH_URL
+  const res=await axios.get(`${url}/api/products`)
   return {
     props:{
       shirtList:res.data,

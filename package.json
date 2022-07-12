@@ -5,9 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "start:dev":"next start",
-    "lint": "next lint"
+    "start": "next start "
   },
   "dependencies": {
     "@paypal/react-paypal-js": "^7.7.0",
