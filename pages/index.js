@@ -6,7 +6,9 @@ import { useState } from "react";
 import Add from "../components/Add";
 import AddButton from "../components/AddButton"
 import Link from 'next/link'
-import baseUrl from "../utils/base";
+
+
+axios.defaults.baseURL = process.env.NEXTAUTH_URL
 
 export default function Home({shirtList,admin}) {
   const [close,setClose]=useState(true)
@@ -38,8 +40,7 @@ export const getServerSideProps=async(ctx)=>{
   if (myCookie.token===process.env.TOKEN){
     admin=true
   }
-  let url=process.env.NEXTAUTH_URL
-  const res=await axios.get(`${url}/api/products`)
+  const res=await axios.get(`/api/products`)
   return {
     props:{
       shirtList:res.data,
